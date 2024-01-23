@@ -71,6 +71,6 @@ public class AISphereCastPerception : AIPerception
         // create ray in direction (use game object orientation)
         Ray ray = new Ray(transform.position, transform.rotation * direction);
         // check ray cast
-        return Physics.SphereCast(ray, distance, layerMask);
+        return Physics.SphereCast(ray, radius, distance, layerMask);
     }
 }

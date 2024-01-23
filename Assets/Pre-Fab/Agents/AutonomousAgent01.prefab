@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6757267387440335978}
   - component: {fileID: 8066492684183879055}
   - component: {fileID: 6388427351857910391}
-  - component: {fileID: 2662192082566168012}
   - component: {fileID: -7217776610095303382}
+  - component: {fileID: 2662192082566168012}
   - component: {fileID: -1925080768257999227}
   - component: {fileID: -5408879685214720813}
   m_Layer: 0
@@ -91,26 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   minSpeed: 5
-  maxForce: 5
+  maxForce: 15
   turnRate: 90
---- !u!114 &2662192082566168012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5903991058790197265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0fc28420dfd71e44ba8aaffc827eb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: Agent02
-  distance: 4
-  maxAngle: 360
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &-7217776610095303382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +108,24 @@ MonoBehaviour:
   tagName: Agent01
   distance: 5
   maxAngle: 180
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &2662192082566168012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5903991058790197265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fc28420dfd71e44ba8aaffc827eb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: Agent02
+  distance: 4
+  maxAngle: 360
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -166,7 +166,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   numRaycast: 15
-  radius: 3.1
+  radius: 0.45
 --- !u!1001 &7414591243967348412
 PrefabInstance:
   m_ObjectHideFlags: 0
