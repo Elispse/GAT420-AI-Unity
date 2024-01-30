@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c280906dcfc6446942737ccefb0e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startNode: {fileID: 0}
+  pathType: 2
 --- !u!114 &4338269562339715462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 7461645203753864089}
   path: {fileID: 7696883275242902890}
+  startNode: {fileID: 0}
 --- !u!114 &7461645203753864089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e011474540f39944a1f2eab91b6176c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 8
   minSpeed: 5
-  maxForce: 25
+  maxForce: 35
   turnRate: 90
 --- !u!54 &1737254011714028557
 Rigidbody:
