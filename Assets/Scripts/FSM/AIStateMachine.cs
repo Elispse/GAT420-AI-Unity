@@ -13,14 +13,11 @@ public class AIStateMachine
     }
     public void AddState(string name, AIState state)
     {
-        Debug.Assert(states.ContainsKey(name), "State machine already contains state " + name);
-
         states[name] = state;
     }
 
     public void SetState(string name)
     {
-        Debug.Assert(states.ContainsKey(name), "State machine already contains state " + name);
         var nextState = states[name];
 
         if (CurrentState == nextState) return;

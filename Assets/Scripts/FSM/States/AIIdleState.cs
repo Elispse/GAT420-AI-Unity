@@ -16,6 +16,17 @@ public class AIIdleState : AIState
         transition = new AIStateTransition(nameof(AIChaseState));
         transition.AddCondition(new BoolCondition(agent.enemySeen));
         transitions.Add(transition);
+
+        // to flee
+        transition = new AIStateTransition(nameof(AIFleeState));
+        transition.AddCondition(new FloatCondition(agent.health, Condition.Predicate.LESS, 40));
+        transitions.Add(transition);
+
+        // to Wave
+        transition = new AIStateTransition(nameof(AIWaveState));
+        transition.AddCondition(new BoolCondition(agent.friendSeen));
+        transition.AddCondition(new BoolCondition(agent.hasWaved, false));
+        transitions.Add(transition);
     }
 
     public override void OnEnter()
@@ -25,6 +36,7 @@ public class AIIdleState : AIState
 
     public override void OnExit()
     {
+        agent.hasWaved.value = false;
         Debug.Log("idle exit");
     }
 

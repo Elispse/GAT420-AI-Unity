@@ -9,6 +9,10 @@ public class AIAttackState : AIState
         AIStateTransition transition = new AIStateTransition(nameof(AIChaseState));
         transition.AddCondition(new FloatCondition(agent.timer, Condition.Predicate.LESS, 0));
         transitions.Add(transition);
+
+        transition = new AIStateTransition(nameof(AIFleeState));
+        transition.AddCondition(new FloatCondition(agent.health, Condition.Predicate.LESS, 40));
+        transitions.Add(transition);
     }
 
     public override void OnEnter()
@@ -16,7 +20,6 @@ public class AIAttackState : AIState
         agent.movement.Stop();
         agent.movement.velocity = Vector3.zero;
         agent.animator?.SetTrigger("Punch");
-
         agent.timer.value = 2;
     }
 

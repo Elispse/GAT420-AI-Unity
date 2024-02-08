@@ -7,21 +7,24 @@ public class AIWaveState : AIState
     float timer;
     public AIWaveState(AIStateAgent agent) : base(agent)
     {
+        AIStateTransition transition = new AIStateTransition(nameof(AIIdleState));
+        transition.AddCondition(new FloatCondition(agent.timer, Condition.Predicate.LESS, 0));
+        transitions.Add(transition);
     }
 
     public override void OnEnter()
     {
-        timer = Time.time + 2;
+        Debug.Log("Wave Enter");
+        agent.movement.Stop();
+        agent.movement.velocity = Vector3.zero;
         agent.animator?.SetTrigger("Wave");
-        Debug.Log("Wave");
+        agent.timer.value = 2;
+        agent.hasWaved.value = true;
     }
 
     public override void OnUpdate()
     {
-        if (Time.time > timer)
-        {
-            agent.stateMachine.SetState(nameof(AIIdleState));
-        }
+        
     }
 
     public override void OnExit()

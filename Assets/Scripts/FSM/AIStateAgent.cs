@@ -6,6 +6,7 @@ public class AIStateAgent : AIAgent
 {
     public Animator animator;
     public AIPerception enemyPerception;
+    public AIPerception friendPerception;
 
     // parameters
     public ValueRef<float> health = new ValueRef<float>(100); // -> memory
@@ -16,8 +17,12 @@ public class AIStateAgent : AIAgent
     public ValueRef<float> enemyDistance = new ValueRef<float>();
     public ValueRef<float> enemyHealth = new ValueRef<float>();
 
+    public ValueRef<bool> hasWaved = new ValueRef<bool>();
+    public ValueRef<bool> friendSeen = new ValueRef<bool>();
+
     public AIStateMachine stateMachine = new AIStateMachine();
     public AIStateAgent enemy { get; private set; }
+    public AIStateAgent friend { get; private set; }
 
     private void Start()
     {
@@ -30,6 +35,8 @@ public class AIStateAgent : AIAgent
         stateMachine.AddState(nameof(AIDeathState), new AIDeathState(this));
         stateMachine.AddState(nameof(AIChaseState), new AIChaseState(this));
         stateMachine.AddState(nameof(AIHitState), new AIHitState(this));
+        stateMachine.AddState(nameof(AIWaveState), new AIWaveState(this));
+        stateMachine.AddState(nameof(AIFleeState), new AIFleeState(this));
 
         stateMachine.SetState(nameof(AIIdleState));
     }
@@ -42,11 +49,18 @@ public class AIStateAgent : AIAgent
 
         var enemies = enemyPerception.GetGameObjects();
         enemySeen.value = (enemies.Length > 0);
-        if (enemySeen)
+        if (enemySeen || stateMachine.CurrentState.ToString() == nameof(AIFleeState))
         {
             enemy = enemies[0].TryGetComponent(out AIStateAgent stateAgent) ? stateAgent : null;
             enemyDistance.value = Vector3.Distance(transform.position, enemy.transform.position);
             enemyHealth.value = enemy.health;
+        }
+
+        var friends = friendPerception.GetGameObjects();
+        friendSeen.value = (friends.Length > 0);
+        if (friendSeen)
+        {
+            friend = friends[0].TryGetComponent(out AIStateAgent stateAgent) ? stateAgent: null;
         }
 
         // from any state (health -> death)
@@ -89,7 +103,6 @@ public class AIStateAgent : AIAgent
 
     private void Attack()
     {
-        Debug.Log("Attack");
         // check for collision with surroundings
         var colliders = Physics.OverlapSphere(transform.position, 1);
         foreach (var collider in colliders)
@@ -100,7 +113,7 @@ public class AIStateAgent : AIAgent
             // check if collider object is a state agent, reduce health
             if (collider.gameObject.TryGetComponent<AIStateAgent>(out var stateAgent))
             {
-                stateAgent.ApplyDamage(Random.Range(20, 50));
+                stateAgent.ApplyDamage(Random.Range(20, 30));
             }
         }
     }
