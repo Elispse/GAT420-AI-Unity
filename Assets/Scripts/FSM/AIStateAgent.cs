@@ -8,8 +8,8 @@ public class AIStateAgent : AIAgent
     public AIPerception enemyPerception;
 
     // parameters
-    public ValueRef<float> health = new ValueRef<float>(); // -> memory
-    public ValueRef<float> timer = new ValueRef<float>();
+    public ValueRef<float> health = new ValueRef<float>(100); // -> memory
+    public ValueRef<float> timer = new ValueRef<float>(); // -> memory
     public ValueRef<float> destinationDistance = new ValueRef<float>();
 
     public ValueRef<bool> enemySeen = new ValueRef<bool>();
@@ -21,6 +21,8 @@ public class AIStateAgent : AIAgent
 
     private void Start()
     {
+        health.value = 100;
+
         // add states to state machine
         stateMachine.AddState(nameof(AIIdleState), new AIIdleState(this));
         stateMachine.AddState(nameof(AIAttackState), new AIAttackState(this));
@@ -51,6 +53,17 @@ public class AIStateAgent : AIAgent
         if (health <= 0) stateMachine.SetState(nameof(AIDeathState));
 
         animator?.SetFloat("Speed", movement.velocity.magnitude);
+
+        //check for transition
+        foreach (var transition in stateMachine.CurrentState.transitions)
+        {
+            if (transition.ToTransition())
+            {
+                stateMachine.SetState(transition.nextState);
+                break;
+            }
+        }
+
         stateMachine.Update();
     }
 

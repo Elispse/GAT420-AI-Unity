@@ -1305,6 +1305,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2411809051117545552, guid: 8d03e27fd7d696f4fbca39c6963eb3d2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7359136276674969174, guid: 8d03e27fd7d696f4fbca39c6963eb3d2, type: 3}
       propertyPath: m_Name
       value: StateAgent02
@@ -1349,6 +1353,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8273781876361892636, guid: 8d03e27fd7d696f4fbca39c6963eb3d2, type: 3}
+      propertyPath: enemyPerception
+      value: 
+      objectReference: {fileID: 1829427601}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4193,6 +4201,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7badcf4a6bebea2459988022b394ed44, type: 3}
+--- !u!114 &1168135061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6098569719626177011, guid: c0440f3e469f3d24e8cb411b5b056867, type: 3}
+  m_PrefabInstance: {fileID: 4829746631816902776}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef80210c2448f8640ba61317fe708677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1238512035
 GameObject:
   m_ObjectHideFlags: 0
@@ -6377,6 +6396,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neighbors: []
+--- !u!114 &1829427601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6098569719626177011, guid: 8d03e27fd7d696f4fbca39c6963eb3d2, type: 3}
+  m_PrefabInstance: {fileID: 582575516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef80210c2448f8640ba61317fe708677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1829679905
 GameObject:
   m_ObjectHideFlags: 0
@@ -6557,6 +6587,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2411809051117545552, guid: c0440f3e469f3d24e8cb411b5b056867, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7359136276674969174, guid: c0440f3e469f3d24e8cb411b5b056867, type: 3}
       propertyPath: m_Name
       value: StateAgent01
@@ -6601,6 +6635,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8273781876361892636, guid: c0440f3e469f3d24e8cb411b5b056867, type: 3}
+      propertyPath: enemyPerception
+      value: 
+      objectReference: {fileID: 1168135061}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

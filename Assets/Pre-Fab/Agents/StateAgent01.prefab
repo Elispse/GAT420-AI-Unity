@@ -122,8 +122,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 3648779279900465366}
   animator: {fileID: 4290552808742813334}
-  enemyPerception: {fileID: 6098569719626177011, guid: 8d03e27fd7d696f4fbca39c6963eb3d2, type: 3}
-  health: 100
+  enemyPerception: {fileID: 6098569719626177011}
+  health:
+    value: 0
+  timer:
+    value: 0
+  destinationDistance:
+    value: 0
+  enemySeen:
+    value: 0
+  enemyDistance:
+    value: 0
+  enemyHealth:
+    value: 0
 --- !u!114 &3648779279900465366
 MonoBehaviour:
   m_ObjectHideFlags: 0

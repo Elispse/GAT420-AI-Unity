@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class AIAttackState : AIState
 {
-    float timer = 0;
     public AIAttackState(AIStateAgent agent) : base(agent)
     {
+        AIStateTransition transition = new AIStateTransition(nameof(AIChaseState));
+        transition.AddCondition(new FloatCondition(agent.timer, Condition.Predicate.LESS, 0));
+        transitions.Add(transition);
     }
 
     public override void OnEnter()
     {
         agent.movement.Stop();
-        timer = Time.time + 2;
-        Attack();
-        Debug.Log("Punch");
+        agent.movement.velocity = Vector3.zero;
+        agent.animator?.SetTrigger("Punch");
+
+        agent.timer.value = 2;
     }
 
     public override void OnUpdate()
     {
-        if (Time.time > timer)
-        {
-            agent.stateMachine.SetState(nameof(AIIdleState));
-        }
+        
     }
 
     public override void OnExit()
