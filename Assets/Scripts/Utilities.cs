@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class Utilities
+public static class Utilities
 {
     public static float Wrap(float value, float min, float max)
     {
@@ -44,5 +45,10 @@ public class Utilities
         }
 
         return result.ToArray();
+    }
+
+    public static T[] GetComponents<T>(this GameObject[] gameObjects)
+    {
+        return gameObjects.SelectMany(go => go.GetComponents<T>()).ToArray();
     }
 }
