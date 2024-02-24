@@ -8,6 +8,7 @@ TagManager:
   - Agent02
   - Agent03
   - Obstacle
+  - UtilityObject
   layers:
   - Default
   - TransparentFX
